@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const connectDB = require('../config/database');
 
 // Import models
@@ -143,20 +144,27 @@ const seedData = async () => {
 
     // Create Sample Users
     console.log('Creating sample users...');
+
+    // Hash password for all users (using 'password123' for testing)
+    const hashedPassword = await bcrypt.hash('password123', 10);
+
     const users = await User.insertMany([
       {
         name: 'Admin User',
         email: 'admin@courtbooking.com',
+        password: hashedPassword,
         role: 'admin'
       },
       {
         name: 'John Doe',
         email: 'john.doe@example.com',
+        password: hashedPassword,
         role: 'user'
       },
       {
         name: 'Jane Smith',
         email: 'jane.smith@example.com',
+        password: hashedPassword,
         role: 'user'
       }
     ]);
@@ -169,6 +177,10 @@ const seedData = async () => {
     console.log(`- ${coaches.length} coaches with different availability`);
     console.log(`- ${pricingRules.length} pricing rules (peak hours, weekend, indoor premium)`);
     console.log(`- ${users.length} users (1 admin, 2 regular users)`);
+    console.log('\n🔐 Test Login Credentials:');
+    console.log('   Email: admin@courtbooking.com | Password: password123');
+    console.log('   Email: john.doe@example.com | Password: password123');
+    console.log('   Email: jane.smith@example.com | Password: password123');
     console.log('\nYou can now start the server with: npm run dev');
 
     process.exit(0);

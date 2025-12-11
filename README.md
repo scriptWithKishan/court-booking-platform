@@ -33,14 +33,10 @@ A full-stack multi-resource booking platform for sports facilities with dynamic 
 - MongoDB Atlas account (or local MongoDB)
 - npm or yarn
 
-## Installation
-
-
-
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/scriptWithKishan/court-booking-platform.git
 cd court-booking-platform
 ```
 
@@ -52,8 +48,6 @@ cd backend
 # Install dependencies
 npm install express mongoose cors dotenv
 
-# Create .env file
-cp .env.example .env
 
 # Edit .env and add your MongoDB Atlas URI
 # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/court-booking?retryWrites=true&w=majority
@@ -83,8 +77,6 @@ npm run dev
 ```
 
 The frontend will run on `http://localhost:5173`
-
-**Note:** Tailwind CSS v4 no longer requires PostCSS or Autoprefixer!
 
 ## Seed Data
 
@@ -177,51 +169,14 @@ court-booking-platform/
     └── package.json
 ```
 
-## Usage
-
-### For Users
-
-1. **Book a Court**:
-   - Select a date
-   - Choose an available time slot
-   - Select a court
-   - Optionally add equipment (rackets, shoes)
-   - Optionally add a coach
-   - See live price breakdown
-   - Confirm booking
-
-2. **View Bookings**:
-   - See all your past and upcoming bookings
-   - View pricing breakdown for each booking
-   - Cancel bookings if needed
-
-### For Admins
-
-1. **Manage Courts**: Add, edit, or disable courts
-2. **Manage Equipment**: Update inventory and pricing
-3. **Manage Coaches**: Add coaches and set availability schedules
-4. **Configure Pricing**: Create and manage pricing rules
-5. **View All Bookings**: Monitor all bookings across the platform
-
-## Assumptions Made
-
-1. **Booking Duration**: All bookings are 1-hour slots
-2. **Time Slots**: Available from 8:00 AM to 10:00 PM
-3. **Authentication**: Simple user identification (no JWT/sessions for MVP)
-4. **Equipment Tracking**: Quantity-based (not individual item tracking)
-5. **Coach Availability**: Pre-configured weekly schedule
-6. **Pricing Rules**: Applied in priority order, all applicable rules stack
 
 ## Future Enhancements
 
-- User authentication with JWT
 - Email notifications for bookings
 - Waitlist system for fully booked slots
 - Payment integration
 - Mobile app
 - Recurring bookings
 - Coach ratings and reviews
+- Complete Admin Dashboard
 
-## License
-
-MIT
